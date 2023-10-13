@@ -10,8 +10,8 @@ elements.galleryList.innerHTML = createGallery(galleryItems);
 function createGallery(arr) {
   return arr
     .map(
-      ({ original, preview, description }, idx) => `
-      <li class="gallery__item" data-id="${idx}>
+      ({ original, preview, description }) => `
+      <li class="gallery__item">
         <a class="gallery__link" href="${original}">
           <img
             class="gallery__image"
