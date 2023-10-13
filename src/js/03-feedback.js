@@ -12,7 +12,7 @@ elements.formTemp.addEventListener('input', throttle(handlerInput, 500));
 elements.formTemp.addEventListener('submit', handlerSubmit);
 
 if (localStorage.getItem(LS_KEY)) {
-  const { email, message } = JSON.parse(localStorage.getItem(LS_KEY));
+  const { email = '', message = '' } = JSON.parse(localStorage.getItem(LS_KEY));
 
   elements.formTemp.elements.email.value = email;
   elements.formTemp.elements.message.value = message;
@@ -22,10 +22,12 @@ if (localStorage.getItem(LS_KEY)) {
 }
 
 function handlerInput(e) {
-  const { email, message } = e.currentTarget.elements;
-
-  formElem.email = email.value;
-  formElem.message = message.value;
+  if (e.target.name === 'email') {
+    formElem.email = e.target.value;
+  }
+  if (e.target.name === 'message') {
+    formElem.message = e.target.value;
+  }
   localStorage.setItem(LS_KEY, JSON.stringify(formElem));
 }
 
