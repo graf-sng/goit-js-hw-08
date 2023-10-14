@@ -35,5 +35,7 @@ function handlerSubmit(e) {
   e.preventDefault();
   console.log(formElem);
   localStorage.removeItem(LS_KEY);
+  formElem.email = '';
+  formElem.message = '';
   e.currentTarget.reset();
 }
